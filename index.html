@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner">
+        <div class="spinner__circle"></div>
+    </div>
+
+    <!-- Login Container -->
+    <main class="login-container" id="loginContainer">
+        <div class="login-card">
+            <div class="login-card__header">
+                <h1 class="login-card__title">Student Portal</h1>
+                <p class="login-card__subtitle">Welcome back! Please login to continue</p>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label class="form-group__label" for="email">Email</label>
+                    <input class="form-group__input" type="email" id="email" placeholder="student@university.edu" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-group__label" for="password">Password</label>
+                    <input class="form-group__input" type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button class="login-button" type="submit">Sign In</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container" id="dashboardContainer" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar__header">
+                <div class="sidebar__logo">
+                    <h2 class="sidebar__title">Student Portal</h2>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-toggle__icon">🌙</span>
+                </button>
+            </div>
+            <nav class="sidebar__nav">
+                <ul class="nav-list">
+                    <li class="nav-list__item">
+                        <a class="nav-list__link nav-list__link--active" href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link" href="#grades">Grades</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link" href="#assignments">Assignments</a>
+                    </li>
+                    <li class="nav-list__item">
+                        <a class="nav-list__link" href="#profile">Profile</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar__footer">
+                <button class="logout-button" id="logoutButton">Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header__greeting">
+                    <h1 class="header__title">Welcome back, <span id="studentName">Student</span>!</h1>
+                    <p class="header__timestamp" id="timestamp">Loading...</p>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="mobile-menu-toggle__line"></span>
+                    <span class="mobile-menu-toggle__line"></span>
+                    <span class="mobile-menu-toggle__line"></span>
+                </button>
+            </header>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2 class="quick-actions__title">Quick Actions</h2>
+                <div class="quick-actions__grid">
+                    <button class="action-button action-button--primary">
+                        <span class="action-button__icon">📚</span>
+                        <span class="action-button__text">Join Class</span>
+                    </button>
+                    <button class="action-button action-button--secondary">
+                        <span class="action-button__icon">📝</span>
+                        <span class="action-button__text">Submit Assignment</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Course Progress -->
+            <section class="course-progress">
+                <h2 class="course-progress__title">Course Progress</h2>
+                <div class="course-progress__grid" id="courseGrid">
+                    <!-- Course cards will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Grades Table -->
+            <section class="grades-section">
+                <h2 class="grades-section__title">Recent Grades</h2>
+                <div class="table-container">
+                    <table class="grades-table" id="gradesTable">
+                        <thead class="grades-table__head">
+                            <tr class="grades-table__row">
+                                <th class="grades-table__header grades-table__header--sortable" data-sort="assignment">
+                                    Assignment
+                                    <span class="sort-indicator">↕</span>
+                                </th>
+                                <th class="grades-table__header grades-table__header--sortable" data-sort="course">
+                                    Course
+                                    <span class="sort-indicator">↕</span>
+                                </th>
+                                <th class="grades-table__header grades-table__header--sortable" data-sort="grade">
+                                    Grade
+                                    <span class="sort-indicator">↕</span>
+                                </th>
+                                <th class="grades-table__header grades-table__header--sortable" data-sort="date">
+                                    Date
+                                    <span class="sort-indicator">↕</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="grades-table__body" id="gradesTableBody">
+                            <!-- Grade rows will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
